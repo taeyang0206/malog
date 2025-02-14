@@ -5,4 +5,4 @@ const view = (req, res) =>
     res.send("router, controller test");
 };
 
-module.exports = view;
+module.exports = view;  

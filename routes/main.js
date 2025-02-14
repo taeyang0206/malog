@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const view = require("../controller/blogController");
+const view = require("../controller/malogController");
 
 router.route("/")
     .get(view);
