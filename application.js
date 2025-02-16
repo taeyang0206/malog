@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const expressLayouts = require("express-ejs-layouts");
 
 const app = express();
 // env 파일에 포트가 지정되어 있을 경우 env 파일에 있는 포트 번호를 사용
@@ -8,6 +9,12 @@ const port = process.env.PORT || 3000;
 const dbConnect = require("./config/malogdbConnection");
 
 dbConnect();
+
+app.use(expressLayouts);
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
+app.use(express.static('./public'));
 
 app.use("/", require("./routes/main"));
 

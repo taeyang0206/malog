@@ -1,8 +1,25 @@
 const express = require("express");
+const mainLayout = "../views/layouts/main.ejs";
 
-const view = (req, res) =>
+const viewMain = (req, res) =>
 {
-    res.send("router, controller test");
+    const locals =
+    {
+        title: "HOME",
+    };
+    res.render("index", {locals, layout : mainLayout});
 };
 
-module.exports = view;  
+const viewAbout = (req, res) =>
+{
+    const locals =
+    {
+        title: "ABOUT",
+    };
+    
+    res.render("about", {locals, layout: mainLayout});
+}
+
+module.exports = 
+{   viewMain, 
+    viewAbout };

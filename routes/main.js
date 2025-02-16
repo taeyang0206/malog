@@ -1,9 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-const view = require("../controller/malogController");
+const {
+    viewMain,
+    viewAbout,
+} = require("../controller/malogController");
 
-router.route("/")
-    .get(view);
+router.route("/home")
+    .get(viewMain);
+
+router.route("/about")
+.get(viewAbout);
 
 module.exports = router;
