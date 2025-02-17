@@ -14,6 +14,7 @@ app.use(expressLayouts);
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
+// public 폴더에 정적이 파일이 들어있다는 표시
 app.use(express.static('./public'));
 
 app.use("/", require("./routes/main"));
