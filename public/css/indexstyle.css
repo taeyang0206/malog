@@ -1,0 +1,157 @@
+/* indexstyle.css */
+
+/* 기본 스타일 설정 */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+/* 사이드바 스타일 */
+.left-sidebar {
+    width: 160px; /* 사용자 메뉴의 폭을 160px로 줄임 */
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 120px;
+    left: 0.3cm;
+    height: calc(100vh - 160px); /* 아래쪽 높이를 줄이기 위해 120px에서 더 줄여 140px로 변경 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 10px;
+    z-index: 8;
+}
+
+.left-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0; /* 메뉴 항목을 위로 붙임 */
+}
+
+.left-sidebar ul li {
+    margin-bottom: 8px; /* 항목 간 간격을 줄임 */
+}
+
+.left-sidebar ul li a {
+    display: block;
+    text-decoration: none;
+    color: #333; /* 기본 텍스트 색을 다크 그레이로 설정 */
+    background-color: #fff; /* 버튼 배경을 흰색으로 설정 */
+    padding: 10px 0; /* 위아래 여백만 추가하여 버튼을 얇게 만듦 */
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px; /* 폰트 크기 줄임 */
+    border: none; /* 윤곽선 없애기 */
+    width: 100%; /* 버튼이 메뉴 배경 폭에 맞도록 설정 */
+    transition: all 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.left-sidebar ul li a:hover {
+    background-color: #f5f5f5; /* 호버 시 버튼 배경을 연한 회색으로 변경 */
+    color: #333; /* 텍스트 색은 유지 */
+    transform: scale(1.05); /* 호버 시 버튼 크기 약간 증가 */
+}
+
+.left-sidebar ul li a:active {
+    transform: scale(1); /* 클릭 시 원래 크기로 돌아옴 */
+}
+
+/* 사용자 정보 스타일 */
+.user-info {
+    text-align: center;
+    margin-bottom: 20px; /* 메뉴 항목과의 간격을 주기 위해 margin 추가 */
+}
+
+.user-profile-img {
+    width: 50px; /* 프로필 사진의 크기 */
+    height: 50px;
+    border-radius: 50%; /* 원형으로 만들기 */
+    object-fit: cover; /* 이미지를 잘라서 영역에 맞추기 */
+}
+
+.user-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* 사용자 메뉴 스타일 */
+.left-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0;
+}
+
+/* 글쓰기 버튼 스타일 */
+.write-btn {
+    width: 100%;
+    padding: 12px 0;
+    margin-top: auto; /* 버튼을 사이드바 맨 아래로 이동 */
+    background-color:#000080;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.write-btn:hover {
+    background-color: #FF5722;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.write-btn:active {
+    transform: scale(1);
+}
+
+/* 글 목록 항목 스타일 */
+.main-content {
+    margin-left: 200px; /* 사이드바 메뉴를 피해 콘텐츠가 왼쪽으로 이동하도록 설정 */
+    padding: 20px;
+    margin-top: 120px; /* 사이드바와 글 목록의 시작 높이를 맞추기 위해 설정 */
+}
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* 항목 간 간격을 조금 줄임 */
+}
+.post-item {
+    background-color: #fff;
+    padding: 5px 8px; /* 위, 아래 여백을 5px로 줄이고, 좌우는 그대로 8px */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.post-item h3 {
+    font-family: 'Poppins', sans-serif; /* Poppins 폰트 적용 */
+    font-size: 18px; /* 폰트 크기 적당히 키움 */
+    font-weight: 600; /* 조금 더 부드러운 볼드체 */
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.post-item a {
+    text-decoration: none;
+    color: #FF7043; /* 글 제목 링크 색상 */
+    font-size: 13px; /* 글 제목 폰트 크기 축소 */
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.post-item a:hover {
+    text-decoration: underline; /* 링크 호버 시 밑줄 */
+}
+
+.post-item:hover {
+    transform: translateY(-3px); /* 마우스를 올렸을 때 글 목록 항목이 살짝 위로 올라가는 효과 */
+}
