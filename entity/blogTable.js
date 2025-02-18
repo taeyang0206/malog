@@ -16,7 +16,7 @@ const createBlogTable = async () =>
                 content VARCHAR(500) NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                FOREIGN KEY (useruuid) REFERENCES user(uuid) ON DELETE CASCADE
+                FOREIGN KEY (useruuid) REFERENCES user(useruuid) ON DELETE CASCADE
             )`
         );
         console.log("SUCCESS BLOG TABLE CREATE");
