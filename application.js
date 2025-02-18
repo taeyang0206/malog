@@ -19,7 +19,11 @@ app.set("views", "./views");
 // public 폴더에 정적이 파일이 들어있다는 표시
 app.use(express.static('./public'));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/", require("./routes/main"));
+app.use("/blog", require("./routes/blogRouter"));
 
 
 app.listen(port, () =>
