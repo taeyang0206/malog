@@ -5,7 +5,7 @@
     <section class="left-sidebar">
         <div class="user-info">
             <img src="user-profile.jpg" alt="User Profile" class="user-profile-img">
-            <p class="user-name">홍길동</p>
+            <p class="user-name"><%= data[0].username %></p>
         </div>
 
         <ul>
@@ -24,10 +24,10 @@
         <h2>Blog Posts</h2>
         <div class="post-list">
             <!-- EJS 반복문을 사용하여 데이터베이스에서 가져온 글 목록 출력 -->
-            <% blog.forEach(blog => { %>
+            <% data.forEach(data => { %>
                 <div class="post-item">
-                    <h3><a href="/blog/<%= blog.bloguuid %>"><%= blog.title %></a></h3>
-                    <p class="post-meta">작성자: <%= blog.username %> | 작성일: <%= blog.created_at %></p>
+                    <h3><a href="/blog/<%= data.bloguuid %>"><%= data.title %></a></h3>
+                    <p class="post-meta">작성자: <%= data.username %> | 작성일: <%= data.created_at %></p>
                 </div>
             <% }) %>
         </div>

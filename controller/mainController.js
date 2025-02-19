@@ -1,25 +1,48 @@
 const express = require("express");
+const mysql = require("mysql2");
 const mainLayout = "../views/layouts/main.ejs";
 
-const viewMain = (req, res) =>
+const 
 {
-    const locals =
+    getAllBlog,
+    getOneBlog
+} = require("./blogController.js");
+
+const
+{
+    getUserName
+} = require("./userController.js");
+
+const connectUserBlog = async (req, res) =>
+{
+    const useruuid = req.params.useruuid;
+
+    try
     {
-        title: "HOME",
-    };
-    res.render("index", {locals, layout : mainLayout});
+        const [ blogData, username] = await Promise.all
+        (
+            [
+                getAllBlog(useruuid),
+                getUserName(useruuid)
+            ]
+        )
+
+        const data = blogData.map(post => ({...post, username}))
+
+        const locals = 
+        {
+            title: "USER HOME"
+        }
+
+        res.render("index", { data, locals, layout: mainLayout});
+    }
+    catch(error)
+    {
+        res.status(500).send({ error: 'Error retrieving blog data' });
+    }    
 };
 
-const viewAbout = (req, res) =>
-{
-    const locals =
-    {
-        title: "ABOUT",
-    };
-    
-    res.render("about", {locals, layout: mainLayout});
-}
-
 module.exports = 
-{   viewMain, 
-    viewAbout };
+{   
+    connectUserBlog,
+};
