@@ -1,9 +1,17 @@
 const express = require("express");
 const router = express.Router();
 
-const { getBlog } = require("../controller/blogController.js");
+const 
+{ 
+    getAllBlog,
+    getOneBlog
 
-router.route("/:useruuid")
-    .get(getBlog);
+} = require("../controller/blogController.js");
+
+router.route("/home/:useruuid")
+    .get(getAllBlog);
+
+router.route("/:useruuid/:bloguuid")
+    .get(getOneBlog);
 
 module.exports = router;
