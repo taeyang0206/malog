@@ -1,11 +1,19 @@
 const mysql = require("mysql2");
 const express = require("express");
 const connection = require("../config/malogdbConnection");
+const mainLayout = "../views/layouts/main.ejs";
+const { format } = require("date-fns");
+
+const 
+{
+    getUserName,
+} = require("./userController.js");
 
 // 유저에 대한 모든 블로그 정보 가져오기
 const getAllBlog = async (req, res) =>
 {
     const useruuid = req.params.useruuid;
+    const username = await getUserName(useruuid);
 
     try
     {
@@ -17,7 +25,16 @@ const getAllBlog = async (req, res) =>
         }
         else
         {
-            res.json(blog);
+            // query로 가져온 데이터에 username 이라는 데이터 추가
+            const updatedBlog = blog.map(post => ({ ...post, 
+                created_at: format(new Date(post.created_at), "yyyy-MM-dd HH:mm:ss"), username }));
+
+            const locals =
+            {
+                title : "USER HOME",
+            };
+
+            res.render("index", { blog: updatedBlog, locals, layout : mainLayout})
         }
     }
     catch(error)

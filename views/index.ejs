@@ -23,10 +23,25 @@
     <section class="content">
         <h2>Blog Posts</h2>
         <div class="post-list">
+            <!-- EJS 반복문을 사용하여 데이터베이스에서 가져온 글 목록 출력 -->
+            <% blog.forEach(blog => { %>
+                <div class="post-item">
+                    <h3><a href="/blog/<%= blog.bloguuid %>"><%= blog.title %></a></h3>
+                    <p class="post-meta">작성자: <%= blog.username %> | 작성일: <%= blog.created_at %></p>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+
+
+    <!-- 글 목록
+    <section class="content">
+        <h2>Blog Posts</h2>
+        <div class="post-list"> -->
             <!-- 각 글 항목 -->
-            <div class="post-item">
+            <!-- <div class="post-item">
                 <h3><a href="#">글 제목 1</a></h3>
                 <p class="post-meta">작성자: 홍길동 | 작성일: 2025-02-17</p>
         </div>
-    </section>
+    </section> -->
 </main>
