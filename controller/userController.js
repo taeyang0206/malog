@@ -1,6 +1,7 @@
 const mysql = require("mysql2");
 const connection = require("../config/malogdbConnection");
 const express = require("express");
+const mainLayout = "../views/layouts/main.ejs";
 
 const getUserName = async (useruuid) =>
 {
@@ -16,5 +17,6 @@ const getUserName = async (useruuid) =>
         return data[0].username;
     }
 }
+
 
 module.exports = { getUserName };

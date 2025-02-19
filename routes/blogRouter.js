@@ -3,15 +3,14 @@ const router = express.Router();
 
 const 
 { 
-    getAllBlog,
-    getOneBlog
+    connectUserBlog,
 
-} = require("../controller/blogController.js");
+} = require("../controller/mainController.js");
 
-router.route("/home/:useruuid")
-    .get(getAllBlog);
+router.route("/:useruuid")
+    .get(connectUserBlog);
 
-router.route("/:useruuid/:bloguuid")
-    .get(getOneBlog);
+// router.route("/:useruuid/:bloguuid")
+//     .get(getOneBlog);
 
 module.exports = router;
