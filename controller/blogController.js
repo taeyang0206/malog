@@ -30,14 +30,13 @@ const getAllBlog = async (useruuid) =>
 }
 
 // 특정 블로그 uuid 에 대한 블로그 제목 및 내용 가져오기
-const getOneBlog = async (req, res) =>
+const getOneBlog = async (bloguuid) =>
 {
-    const bloguuid = req.params.bloguuid;
-
     try
     {
         const [ blog ] = await connection.query(`SELECT * FROM blog WHERE bloguuid = ?`, [bloguuid]);
-        res.json(blog);
+
+        return blog;
     }
     catch(error)
     {

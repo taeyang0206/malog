@@ -42,7 +42,34 @@ const connectUserBlog = async (req, res) =>
     }    
 };
 
+const connectUserOneBlog = async (req, res) =>
+{
+    const bloguuid = req.params.bloguuid;
+
+    try
+    {
+        const combineBlogUser =  await Promise.all
+        (
+            [
+                getOneBlog(bloguuid),
+            ]
+        )
+
+        locals =
+        {
+            title: "USER BLOG"
+        };
+
+        res.json(combineBlogUser);
+    }
+    catch(error)
+    {
+        res.status(500).send("NOT FOUND DATA");
+    }
+}
+
 module.exports = 
 {   
     connectUserBlog,
+    connectUserOneBlog,
 };
