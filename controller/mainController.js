@@ -60,7 +60,7 @@ const connectUserOneBlog = async (req, res) =>
             title: "USER BLOG"
         };
 
-        res.json(combineBlogUser);
+        res.render("about", {locals, layout: mainLayout});
     }
     catch(error)
     {
