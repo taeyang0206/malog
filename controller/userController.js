@@ -6,7 +6,7 @@ const mainLayout = "../views/layouts/main.ejs";
 const getUserName = async (useruuid) =>
 {
     // 배열 형태로 반환
-    const [ data ] = await connection.query(`SELECT username FROM user WHERE useruuid = ?`, [ useruuid ]);
+    const [ data ] = await connection.query(`SELECT useruuid, username FROM user WHERE useruuid = ?`, [ useruuid ]);
 
     if(data.length <= 0)
     {
@@ -14,7 +14,7 @@ const getUserName = async (useruuid) =>
     }
     else
     {
-        return data[0].username;
+        return data;
     }
 }
 

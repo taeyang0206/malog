@@ -19,7 +19,7 @@ const connectUserBlog = async (req, res) =>
 
     try
     {
-        const [ blogData, username] = await Promise.all
+        const [ blogData, userdata] = await Promise.all
         (
             [
                 getAllBlog(useruuid),
@@ -27,7 +27,7 @@ const connectUserBlog = async (req, res) =>
             ]
         )
 
-        const data = blogData.map(post => ({...post, username}))
+        const data = blogData.map(post => ({...post, userdata}))
 
         const locals = 
         {
