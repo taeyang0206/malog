@@ -27,7 +27,7 @@ const connectUserBlog = async (req, res) =>
             ]
         )
 
-        const data = blogData.map(post => ({...post, userdata}));
+        const data = blogData.map(post => ({...post, useruuid: userdata[0].useruuid, username: userdata[0].username}));
 
         const locals = 
         {
@@ -49,7 +49,7 @@ const connectUserOneBlog = async (req, res) =>
 
     try
     {
-        const [ blog, username ] =  await Promise.all
+        const [ blog, user ] =  await Promise.all
         (
             [
                 getOneBlog(bloguuid),
@@ -57,7 +57,7 @@ const connectUserOneBlog = async (req, res) =>
             ]
         )
 
-        const combineBlogUser = blog.map(post => ({...post, username}));
+        const combineBlogUser = blog.map(post => ({...post, useruuid: user[0].useruuid, username: user[0].username}));
 
         locals =
         {

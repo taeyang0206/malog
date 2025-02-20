@@ -8,7 +8,11 @@
         <section class="left-sidebar">
             <div class="user-info">
                 <img src="user-profile.jpg" alt="User Profile" class="user-profile-img">
-                <p class="user-name">이름</p>
+                <% if (combineBlogUser.length > 0 && combineBlogUser[0]) { %>
+                    <p class="user-name"><%= combineBlogUser[0].username %></p>
+                <% } else { %>
+                    <p>No username available</p>
+                <% } %>
             </div>
             <ul>
                 <li><a href="#">PROFILE</a></li>
@@ -22,11 +26,19 @@
         <!-- 블로그 글 상세 페이지 -->
         <section class="content">
             <div class="post-header">
-                <h2 class="post-title">제목</h2>
-                <p class="post-meta">작성자: 이름 | 작성일: 날짜</p>
+                <% if (combineBlogUser.length > 0 && combineBlogUser[0]) { %>
+                    <h2 class="post-title"><%= combineBlogUser[0].title %></h2>
+                    <p class="post-meta">작성자: <%= combineBlogUser[0].username %> | 작성일: <%= combineBlogUser[0].created_at %></p>
+                <% } else { %>
+                    <p>No username available</p>
+                <% } %>
             </div>
             <div class="post-content">
-                <p>내용</p>
+                <% if (combineBlogUser.length > 0 && combineBlogUser[0]) { %>
+                    <p><%= combineBlogUser[0].content %></p>
+                <% } else { %>
+                    <p>No username available</p>
+                <% } %>
             </div>
             <div class="post-tags">
                     <span>태그</span>

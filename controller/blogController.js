@@ -36,7 +36,10 @@ const getOneBlog = async (bloguuid) =>
     {
         const [ blog ] = await connection.query(`SELECT * FROM blog WHERE bloguuid = ?`, [bloguuid]);
 
-        return blog;
+        const updatedBlog = blog.map(post => ({ ...post, 
+            created_at: format(new Date(post.created_at), "yyyy-MM-dd HH:mm:ss")}));
+
+        return updatedBlog;
     }
     catch(error)
     {
